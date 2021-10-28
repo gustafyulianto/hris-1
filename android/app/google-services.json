@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "602957278078",
+    "project_id": "facerec-8425a",
+    "storage_bucket": "facerec-8425a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602957278078:android:471c1424e731190b02612f",
+        "android_client_info": {
+          "package_name": "hris.hris"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602957278078-ak0bchpdiv7gdotdj5uu14dida6rchud.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hris.hris",
+            "certificate_hash": "4910317ff3d5a32809dadfd27b4cc279008986bb"
+          }
+        },
+        {
+          "client_id": "602957278078-n76bj8s8rhka5fqce5r0nlo1dlk1dv41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXkppIQVSw4mVUw7Ud_6aE2JgksbA42Z0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602957278078-n76bj8s8rhka5fqce5r0nlo1dlk1dv41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

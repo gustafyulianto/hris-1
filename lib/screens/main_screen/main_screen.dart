@@ -1,12 +1,15 @@
 import 'package:hris/bloc/auth_bloc/auth.dart';
 import 'package:hris/screens/main_screen/view_dashboard.dart';
 import 'package:hris/screens/main_screen/view_graph.dart';
+import 'package:hris/screens/main_screen/view_history.dart';
+import 'package:hris/screens/main_screen/view_setting.dart';
 import 'package:hris/style/components.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hris/style/theme.dart' as Style;
 import 'package:hris/bloc/home/home.dart';
+
 
 class MainScreen extends StatefulWidget {
   @override
@@ -17,23 +20,23 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: bgColor,
-        title: Center(child: Text("Aplikasi Monitoring")),
-        actions: [
-          IconButton(icon: Icon(EvaIcons.logOutOutline), onPressed: () {
-            BlocProvider.of<AuthenticationBloc>(context).add(
-                          LoggedOut(),
-                        );
-          })
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: bgColor,
+      //   title: Center(child: Text("HRIS APPLICATION")),
+      //   actions: [
+      //     IconButton(icon: Icon(EvaIcons.logOutOutline), onPressed: () {
+      //       BlocProvider.of<AuthenticationBloc>(context).add(
+      //                     LoggedOut(),
+      //                   );
+      //     })
+      //   ],
+      // ),
         body: Center(
           child: BlocProvider(
             create: (context) => ChangeHome(
               repositoryHome: RepositoryHome(
                 changeHomeProvider: ChangeHomeProvider(
-                  homePage: HomePage.HomeGraph,
+                  homePage: HomePage.Knowledge,
                 ),
               ),
             ),
@@ -45,26 +48,29 @@ class _MainScreenState extends State<MainScreen> {
                     children: [
                       ViewDashboard(),
                       ViewGraph(),
-                      Center(
-                        child: Text("History"),
-                      ),
-                      Center(
-                        child: Text("Setting"),
-                      ),
+                      ViewHistory(),
+                      ViewSetting()
                     ],
                   ),
                   bottomNavigationBar: BottomNavigationBar(
-                    selectedItemColor: Colors.black,
+                    selectedItemColor: Colors.blueAccent,
+                    unselectedItemColor: Colors.black54,
+                    showSelectedLabels: true,
+                    showUnselectedLabels: true,
+                    unselectedFontSize: 12,
+                    selectedFontSize: 12,
+                    type: BottomNavigationBarType.fixed,
+                elevation: 10.0,
                     currentIndex: state,
                     onTap: (value) {
                       context.read<ChangeHome>().add(
                         value == 0
-                            ? HomePage.HomePopular
+                            ? HomePage.Overview
                             : value == 1
-                            ? HomePage.HomeGraph
+                            ? HomePage.Knowledge
                             : value == 2
-                            ? HomePage.HomeHistory
-                            : HomePage.HomeSetting,
+                            ? HomePage.Employees
+                            : HomePage.Account,
                       );
                     },
                     items: [
@@ -81,8 +87,6 @@ class _MainScreenState extends State<MainScreen> {
                           color: Colors.black38,
                         ),
                         label: ("Graph"),
-                        
-                      
                       ),
                       BottomNavigationBarItem(
                         icon: Icon(

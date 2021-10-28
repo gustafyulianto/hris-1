@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 enum HomePage {
-  HomePopular,
-  HomeGraph,
-  HomeHistory,
-  HomeSetting,
+  Overview,
+  Knowledge,
+  Employees,
+  Account,
 }
 
 class ChangeHomeProvider {
@@ -20,27 +20,25 @@ class ChangeHomeProvider {
 
 class RepositoryHome {
   ChangeHomeProvider _changeHomeProvider;
-
-  // RepositoryHome({ChangeHomeProvider changeHomeProvider});
   RepositoryHome({ChangeHomeProvider changeHomeProvider}) : _changeHomeProvider = changeHomeProvider;
 
   int changeHomePage(HomePage homePage) {
     _changeHomeProvider._homePage = homePage;
 
     switch (_changeHomeProvider._homePage) {
-      case HomePage.HomePopular:
+      case HomePage.Overview:
         return 0;
         break;
 
-      case HomePage.HomeGraph:
+      case HomePage.Knowledge:
         return 1;
         break;
 
-      case HomePage.HomeHistory:
+      case HomePage.Employees:
         return 2;
         break;
 
-      case HomePage.HomeSetting:
+      case HomePage.Account:
         return 3;
         break;
 
