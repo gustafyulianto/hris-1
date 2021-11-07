@@ -161,19 +161,25 @@ class _ViewDashboardState extends State<ViewDashboard> {
                                 ),
                               ),
                             )),
-                            defaultMenuCard(Container(
-                              // color: Colors.orangeAccent,
-                              width: 60,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  // FaIcon(FontAwesomeIcons.suitcaseRolling, size: 26, color: kPrimaryColor),
-                                  FaIcon(FontAwesomeIcons.hotTub,
-                                      size: 26, color: kPrimaryColor),
-                                  SizedBox(height: 5),
-                                  dynamicText("Leave", fontSize: 10),
-                                  // SizedBox(width: 4),
-                                ],
+                            defaultMenuCard(InkWell(
+                              onTap: (){
+                                Navigator.push(context,
+                                MaterialPageRoute(builder: (BuildContext context) => EmployeePage()));
+                              },
+                              child: Container(
+                                // color: Colors.orangeAccent,
+                                width: 60,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    // FaIcon(FontAwesomeIcons.suitcaseRolling, size: 26, color: kPrimaryColor),
+                                    FaIcon(FontAwesomeIcons.hotTub,
+                                        size: 26, color: kPrimaryColor),
+                                    SizedBox(height: 5),
+                                    dynamicText("Employee", fontSize: 10),
+                                    // SizedBox(width: 4),
+                                  ],
+                                ),
                               ),
                             )),
                             defaultMenuCard(Container(

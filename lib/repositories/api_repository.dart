@@ -1,4 +1,4 @@
-import 'package:hris/models/barang_model.dart';
+import 'package:hris/models/employee_model.dart';
 
 import 'api_provider.dart';
 
@@ -6,11 +6,9 @@ class ApiRepository {
   final _provider = ApiProvider();
 
 
-  Future<ModelBarang> fetchDataBarangList(){
-    return _provider.fetchDataBarangList();
+  Future<ModelEmployee> fetchDataEmployeeList(){
+    return _provider.fetchDataEmployeeList();
   }
-
-  
 }
 
 class NetworkError extends Error {}

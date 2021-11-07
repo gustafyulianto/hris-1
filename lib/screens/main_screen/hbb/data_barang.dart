@@ -1,21 +1,21 @@
-import 'package:hris/bloc/barang/barang_bloc.dart';
-import 'package:hris/models/barang_model.dart';
+import 'package:hris/bloc/employee/employee_bloc.dart';
+import 'package:hris/models/employee_model.dart';
 import 'package:hris/style/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BarangPage extends StatefulWidget {
+class EmployeePage extends StatefulWidget {
   @override
-  _BarangPageState createState() => _BarangPageState();
+  _EmployeePageState createState() => _EmployeePageState();
 }
 
-class _BarangPageState extends State<BarangPage> {
-  final BarangBloc _barangBloc = BarangBloc();
+class _EmployeePageState extends State<EmployeePage> {
+  final EmployeeBloc _employeeBloc = EmployeeBloc();
 
 
   @override
   void initState() {
-    _barangBloc.add(GetBarangList());
+    _employeeBloc.add(GetEmployeeList());
 
     super.initState();
   }
@@ -23,7 +23,7 @@ class _BarangPageState extends State<BarangPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Barang List',),backgroundColor: bgColor,),
+      appBar: AppBar(title: Text('Employee List',),backgroundColor: bgColor,),
       body: _buildListCovid(),
     );
   }
@@ -32,10 +32,10 @@ class _BarangPageState extends State<BarangPage> {
     return Container(
       margin: EdgeInsets.all(8.0),
       child: BlocProvider(
-        create: (_) => _barangBloc,
-        child: BlocListener<BarangBloc, BarangState>(
+        create: (_) => _employeeBloc,
+        child: BlocListener<EmployeeBloc, EmployeeState>(
           listener: (context, state) {
-            if (state is BarangError) {
+            if (state is EmployeeError) {
               Scaffold.of(context).showSnackBar(
                 SnackBar(
                   content: Text(state.message),
@@ -43,15 +43,15 @@ class _BarangPageState extends State<BarangPage> {
               );
             }
           },
-          child: BlocBuilder<BarangBloc, BarangState>(
+          child: BlocBuilder<EmployeeBloc, EmployeeState>(
             builder: (context, state) {
-              if (state is BarangInitial) {
+              if (state is EmployeeInitial) {
                 return _buildLoading();
-              } else if (state is BarangLoading) {
+              } else if (state is EmployeeLoading) {
                 return _buildLoading();
-              } else if (state is BarangLoaded) {
-                return _buildCard(context, state.barangModel);
-              } else if (state is BarangError) {
+              } else if (state is EmployeeLoaded) {
+                return _buildCard(List<ModelEmployee> albums, state.employeeModel);
+              } else if (state is EmployeeError) {
                 return Container();
               }
             },
@@ -61,9 +61,9 @@ class _BarangPageState extends State<BarangPage> {
     );
   }
 
-  Widget _buildCard(BuildContext context, ModelBarang model) {
+  Widget _buildCard(BuildContext context, ModelEmployee model) {
     return ListView.builder(
-      itemCount: model.data.length,
+      itemCount: model.employee_id,
       itemBuilder: (context, index) {
         return Container(
           margin: EdgeInsets.all(8.0),
@@ -72,9 +72,9 @@ class _BarangPageState extends State<BarangPage> {
               margin: EdgeInsets.all(8.0),
               child: Column(
                 children: <Widget>[
-                  Text("ID: ${model.data[index].id}"),
+                  Text("ID: ${model.employee_id}"),
                   Text(
-                      "Serial Number: ${model.data[index].sn}"),
+                      "Serial Number: ${model.employee_type}"),
                 ],
               ),
             ),

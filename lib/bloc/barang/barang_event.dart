@@ -1,10 +1,10 @@
-part of 'barang_bloc.dart';
+// part of 'barang_bloc.dart';
 
-abstract class BarangEvent extends Equatable {
-  const BarangEvent();
-}
+// abstract class BarangEvent extends Equatable {
+//   const BarangEvent();
+// }
 
-class GetBarangList extends BarangEvent {
-  @override
-  List<Object> get props => null;
-}
+// class GetBarangList extends BarangEvent {
+//   @override
+//   List<Object> get props => null;
+// }

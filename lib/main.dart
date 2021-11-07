@@ -1,9 +1,7 @@
 import 'package:hris/screens/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/auth_bloc/auth.dart';
-import 'bloc/auth_bloc/auth_bloc.dart';
 import 'repositories/repositories.dart';
 import 'package:hris/style/theme.dart' as Style;
 import 'screens/auth/login_screen.dart';
@@ -109,8 +107,6 @@ class MyApp extends StatelessWidget {
               ),
             ),
           );
-
-
         },
       ),
     );

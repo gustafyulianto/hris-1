@@ -226,8 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Divider(
                             thickness: 2,
                           ),
-                        ),
-                        
+                        ),   
                       ],
                     )
                   ],

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:hris/models/barang_model.dart';
+import 'package:hris/models/employee_model.dart';
 import 'package:hris/repositories/repositories.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
@@ -11,14 +11,13 @@ import 'dart:convert';
 class ApiProvider {
   final Dio _dio = Dio();
 
-  
-  
+  // final _urlEmployee = Uri.parse('http://node.pgncom.co.id:1700/employeedetail');
+  // final String urlEmployee = 'http://node.pgncom.co.id:1700/employeedetail';
 
-  final _urlHbb =
-      Uri.parse('https://hbb.pgncom.co.id/index.php/api/Data/barang');
-  final String urlHbb = 'https://hbb.pgncom.co.id/index.php/api/Data/barang';
+  static String mainUrl = "http://node.pgncom.co.id:1700";
+  var urlEmployee = '$mainUrl/employeedetail';
 
-  Future<ModelBarang> fetchDataBarangList() async {
+  Future<ModelEmployee> fetchDataEmployeeList() async {
     try {
       var token = await storage.FlutterSecureStorage().read(key: 'token');
       (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
@@ -28,17 +27,17 @@ class ApiProvider {
         return client;
       };
       
-      Response response = await _dio.get(urlHbb,
+      Response response = await _dio.get(urlEmployee,
           options: Options(headers: {
-            HttpHeaders.authorizationHeader:
+            'Authorization': 'Bearer $token'
                 // 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJ1c2VybmFtZSI6ImJhaW0iLCJpYXQiOjE2MjE0NzY3MjksImV4cCI6MTYyMTUxOTkyOX0.JjPB0WobY2qAebv5mB7zP_2Eceo0P3qAGrziwPizYTg'
-          token
           }));
-
-      return ModelBarang.fromJson(response.data);
+          
+      // print(response.data[0]);    
+      return ModelEmployee.fromJson(response.data);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
-      return ModelBarang.withError("Data not found / Connection issue");
+      return ModelEmployee.withError("Data API not found / Connection issue");
     }
   }
 }
