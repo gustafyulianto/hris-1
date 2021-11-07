@@ -16,7 +16,7 @@ class EmployeeLoading extends EmployeeState {
 }
 
 class EmployeeLoaded extends EmployeeState {
-  final List<ModelEmployee> employeeModel;
+  final ModelEmployee employeeModel;
   EmployeeLoaded(this.employeeModel);
   @override 
   List<Object> get props => [employeeModel];

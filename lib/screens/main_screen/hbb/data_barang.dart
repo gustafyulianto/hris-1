@@ -50,7 +50,7 @@ class _EmployeePageState extends State<EmployeePage> {
               } else if (state is EmployeeLoading) {
                 return _buildLoading();
               } else if (state is EmployeeLoaded) {
-                return _buildCard(List<ModelEmployee> albums, state.employeeModel);
+                return _buildCard(context, state.employeeModel);
               } else if (state is EmployeeError) {
                 return Container();
               }
@@ -63,7 +63,7 @@ class _EmployeePageState extends State<EmployeePage> {
 
   Widget _buildCard(BuildContext context, ModelEmployee model) {
     return ListView.builder(
-      itemCount: model.employee_id,
+      itemCount: model.data.length,
       itemBuilder: (context, index) {
         return Container(
           margin: EdgeInsets.all(8.0),
@@ -72,9 +72,9 @@ class _EmployeePageState extends State<EmployeePage> {
               margin: EdgeInsets.all(8.0),
               child: Column(
                 children: <Widget>[
-                  Text("ID: ${model.employee_id}"),
+                  Text("ID: ${model.data[0].employee_id}"),
                   Text(
-                      "Serial Number: ${model.employee_type}"),
+                      "Serial Number: ${model.data[0].employee_type}"),
                 ],
               ),
             ),

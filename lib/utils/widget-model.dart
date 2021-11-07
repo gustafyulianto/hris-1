@@ -84,8 +84,8 @@ getPreferences(String key, {kType}) async {
     value = ref.getString(key);
   } else if (kType == 'bool') {
     value = ref.getBool(key);
-  } else if (kType == 'list') {
-    value = ref.getStringList(key);
+  // } else if (kType == 'list') {
+  //   value = ref.List(key);
   }
   return value;
 }
